@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  div 
+    label(for="id") ID
+    input(type="text" id="id")
+  div 
+    label(for="pw") Password
+    input(type="password" id="pw")
+  div 
+    label(for="pw") Nick
+    input(type="text" id="nick")
+  div 
+    label BlogType
+    div.item
+      input(type="radio" id="blogType1" name="blogType" value="naver" checked)
+      label(for="blogType1") Naver
+    div.item
+      input(type="radio" id="blogType2" name="blogType" value="tistory")
+      label(for="blogType2") Tistory
+  div 
+    label URL
+    each item, index in sites
+      div.item
+        input(type="radio" id="site" + index name="url" value=item.id)
+        label(for="site" + index) #{item.getStartUrl()}
+  div(style="margin-top: 30px;")
+    button(type="button" onclick="startBot()") Start Bot!
+
+
+  script(type='text/javascript' src='/javascripts/common.js')
